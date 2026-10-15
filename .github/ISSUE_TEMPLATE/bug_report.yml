@@ -1,0 +1,45 @@
+name: Bug report
+description: Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to report a bug. Please don't post passwords, API keys or private client data.
+  - type: input
+    id: instatic-version
+    attributes:
+      label: Instatic version
+      placeholder: e.g. main from 2026-10-14, or a release number
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: StaticSEO version
+      description: Shown under Admin → Plugins.
+      placeholder: e.g. 0.9.0
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open SEO → Settings → General
+        2. …
+        3. Publish the site
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include the relevant part of the published HTML (`<head>`) or error messages if you can.
+    validations:
+      required: true

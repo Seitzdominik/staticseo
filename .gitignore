@@ -1,0 +1,27 @@
+# Build output (ZIPs are attached to GitHub Releases)
+dist/
+*.zip
+
+# Private working files (not part of the open-source repo)
+legacy/
+marketing/
+outreach/
+CONTEXT.md
+ROADMAP.md
+
+# Secrets and local config
+.env
+.env.*
+*.pem
+*.key
+
+# Dependencies and tooling
+node_modules/
+.claude/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

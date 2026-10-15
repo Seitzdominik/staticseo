@@ -1,0 +1,94 @@
+{
+  "id": "staticseo.core",
+  "name": "Static SEO",
+  "version": "0.9.0",
+  "apiVersion": 1,
+  "description": "Open source (MIT), beta. SEO for Instatic, rendered into static HTML: titles, descriptions, robots, canonical, Open Graph, Twitter Cards, JSON-LD schema and an XML sitemap. One SEO workspace in the admin and an SEO panel in the site editor.",
+  "author": { "name": "Seitz Dominik Visuals", "email": "support@staticseo.co", "url": "https://staticseo.co" },
+  "license": "MIT",
+  "homepage": "https://staticseo.co",
+  "keywords": ["seo", "opengraph", "schema", "sitemap", "meta"],
+  "permissions": [
+    "cms.hooks",
+    "cms.storage",
+    "cms.routes",
+    "cms.routes.public",
+    "admin.navigation",
+    "editor.code",
+    "editor.panels",
+    "editor.store.read",
+    "visualComponents.register"
+  ],
+  "entrypoints": {
+    "server": "server/index.js",
+    "editor": "editor/index.js"
+  },
+  "resources": [
+    {
+      "id": "config",
+      "title": "Configuration",
+      "fields": [
+        { "id": "key", "label": "Key", "type": "text", "required": true },
+        { "id": "json", "label": "Settings (JSON)", "type": "longtext" }
+      ]
+    },
+    {
+      "id": "pages",
+      "title": "Page SEO",
+      "singularLabel": "Page",
+      "pluralLabel": "Pages",
+      "fields": [
+        { "id": "path", "label": "Path", "type": "text", "required": true },
+        { "id": "title", "label": "SEO title", "type": "text" },
+        { "id": "description", "label": "Meta description", "type": "longtext" },
+        { "id": "image", "label": "Social image", "type": "text" },
+        { "id": "noindex", "label": "noindex", "type": "boolean" }
+      ]
+    },
+    {
+      "id": "index",
+      "title": "Published URLs",
+      "fields": [
+        { "id": "path", "label": "Path", "type": "text", "required": true },
+        { "id": "title", "label": "Title", "type": "text" },
+        { "id": "name", "label": "Name", "type": "text" },
+        { "id": "kind", "label": "Kind", "type": "text" },
+        { "id": "noindex", "label": "noindex", "type": "boolean" },
+        { "id": "lastSeen", "label": "Last published", "type": "text" },
+        { "id": "via", "label": "Detected via", "type": "text" },
+        { "id": "audit", "label": "Audit (JSON)", "type": "longtext" }
+      ]
+    },
+    {
+      "id": "entries",
+      "title": "Synced entry data",
+      "fields": [
+        { "id": "path", "label": "Path", "type": "text", "required": true },
+        { "id": "table", "label": "Post type", "type": "text" },
+        { "id": "noindex", "label": "noindex", "type": "boolean" },
+        { "id": "description", "label": "Fallback description", "type": "longtext" },
+        { "id": "datePublished", "label": "Published", "type": "text" },
+        { "id": "dateModified", "label": "Modified", "type": "text" },
+        { "id": "author", "label": "Author", "type": "text" }
+      ]
+    },
+    {
+      "id": "faqs",
+      "title": "Synced FAQs",
+      "fields": [
+        { "id": "path", "label": "Path", "type": "text", "required": true },
+        { "id": "source", "label": "Source", "type": "text" },
+        { "id": "items", "label": "Questions (JSON)", "type": "longtext" }
+      ]
+    }
+  ],
+  "adminPages": [
+    {
+      "id": "seo",
+      "title": "SEO",
+      "navLabel": "SEO",
+      "content": { "kind": "app", "heading": "SEO", "entry": "admin/app.js" }
+    }
+  ],
+  "pack": { "path": "pack/site.json" }
+}

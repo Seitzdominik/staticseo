@@ -1,0 +1,37 @@
+{
+  "visualComponents": [
+    {
+      "id": "staticseo-data",
+      "name": "Static SEO",
+      "params": [],
+      "classIds": [],
+      "createdAt": 0,
+      "tree": {
+        "rootNodeId": "staticseo-data-root",
+        "nodes": {
+          "staticseo-data-root": {
+            "id": "staticseo-data-root",
+            "moduleId": "base.container",
+            "label": "Static SEO data (place once in the layout template)",
+            "children": [],
+            "props": {
+              "tag": "div",
+              "customTag": "",
+              "htmlAttributes": {
+                "hidden": "",
+                "data-sseo": "1",
+                "data-sseo-path": "{route.path}",
+                "data-sseo-page-title": "{page.title}",
+                "data-sseo-entry-id": "{currentEntry.id}",
+                "data-sseo-entry-title": "{currentEntry.title}",
+                "data-sseo-entry-seo-title": "{currentEntry.seoTitle}",
+                "data-sseo-entry-seo-description": "{currentEntry.seoDescription}",
+                "data-sseo-entry-image": "{currentEntry.featuredMedia}"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

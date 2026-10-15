@@ -1,0 +1,40 @@
+name: Release
+
+# Push a tag like v0.9.0 → tests run, the plugin ZIP is built and attached to a GitHub Release.
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Check that the tag matches the manifest version
+        run: |
+          VERSION=$(node -p "require('./src/plugin.json').version")
+          if [ "v$VERSION" != "$GITHUB_REF_NAME" ]; then
+            echo "Tag $GITHUB_REF_NAME does not match src/plugin.json version $VERSION"
+            exit 1
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+
+      - name: Test
+        run: node test/run.mjs
+
+      - name: Build
+        run: node build.mjs
+
+      - name: Publish release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/static-seo-${{ env.VERSION }}.zip
+          generate_release_notes: true
